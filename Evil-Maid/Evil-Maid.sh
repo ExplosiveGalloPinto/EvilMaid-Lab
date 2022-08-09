@@ -9,7 +9,7 @@ cd /out
 echo $initrd
 lsinitrd --unpack /target/$initrd
 cd scripts/local-top
-sed $'/exit 0;/{e cat     $wdir/payload.txt\n}' cryptroot > cryptroot
+head -n -2 cryptroot > cryptroot && cat $wdir/payload.txt >> cryptroot
 cd /out
 find . | cpio -H newc -o | gzip -9 > /$initrd
 mv /$initrd /target/$initrd
