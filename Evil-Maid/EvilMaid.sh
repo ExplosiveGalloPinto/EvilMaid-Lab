@@ -15,5 +15,5 @@ cd ~/out
 find . | cpio -H newc -o | gzip -9 > ~/$initrd
 sudo mv ~/$initrd ~/target/$initrd
 sudo umount ~/target
-echo "Evil Maid Attack Completed"
+figlet -t -k -f /usr/share/figlet/small.flf "Evil Maid Complete!"
 exit 0
