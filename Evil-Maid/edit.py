@@ -1,19 +1,30 @@
 import sys
+'''
+rrplace
+Used for replacing the nth appereance of a substring on a string
+s: origin String
+old: matching string to replace
+new: string to replace the old string with
+ocurrence: selects the occurrence for the matching string
+'''
 def rreplace(s,old,new,occurrence):
     li = s.rsplit(old, occurrence)
     return new.join(li)
+'''
+The next code bit is used to open the desired file and replacing a substring with the content of another file.
+'''
 
-f = open(sys.argv[1], "r")
-content = f.read()
-f.close()
+oldFile = open(sys.argv[1], "r")
+oldFileContent = oldFile.read()
+oldFile.close()
 
-f2 = open(sys.argv[2], "r")
-content2 = f2.read()
+contentFile = open(sys.argv[2], "r")
+contentFilecontent = contentFile.read()
 
-result = rreplace(content, 'exit 0', content2,1)
+result = rreplace(oldFileContent, 'exit 0', contentFilecontent,1)
 
-f1 = open(sys.argv[1], "w")
-f1.seek(0)
-f1.write(result)
-f1.truncate()
-f1.close()
+destinationFile = open(sys.argv[1], "w")
+destinationFile.seek(0)
+destinationFile.write(result)
+destinationFile.truncate()
+destinationFile.close()
